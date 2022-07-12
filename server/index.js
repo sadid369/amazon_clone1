@@ -1,16 +1,14 @@
-console.log("Hello World");
+//IMPORTS FROM PACKAGES
 const express = require("express");
+const mongoose = require("mongoose");
+//IMPORTS FROM OTHER FILES
+const authRouter = require("./routes/auth");
+//INIT
 const PORT = 3000;
 const app = express();
-//CREATING AN API
-//GET, PUT, POST , DELETE, UPDATE -> CRUD
-// http://<youripaddress>/hello-wrold
-app.get("/hello-world", (req, res) => {
-  res.json({ hi: "Hello World" });
-});
-app.get("/", (req, res) => {
-  res.json({ Name: "Sadid" });
-});
+//middleware
+app.use(authRouter);
+//Connections
 
 app.listen(PORT, () => {
   console.log(`Connected at port ${PORT} `);
