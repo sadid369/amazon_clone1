@@ -6,10 +6,21 @@ const authRouter = require("./routes/auth");
 //INIT
 const PORT = 3000;
 const app = express();
+const DB =
+  "mongodb+srv://sadid:123457@cluster0.1hlkuky.mongodb.net/?retryWrites=true&w=majority";
 //middleware
+app.use(express.json());
 app.use(authRouter);
 //Connections
 
+mongoose
+  .connect(DB)
+  .then(() => {
+    console.log("Connection MongoDB Successful");
+  })
+  .catch((e) => {
+    console.log(e);
+  });
 app.listen(PORT, () => {
   console.log(`Connected at port ${PORT} `);
 });
