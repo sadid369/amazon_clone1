@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:amazon_clone1/common/widgets/bottom_bar.dart';
 import 'package:amazon_clone1/constants/error_handling.dart';
 import 'package:amazon_clone1/constants/global_variables.dart';
 import 'package:amazon_clone1/constants/utils.dart';
@@ -76,7 +77,7 @@ class AuthServices {
           await prefs.setString('x-auth-token', jsonDecode(res.body)['token']);
           Navigator.pushNamedAndRemoveUntil(
             context,
-            HomeScreen.routeName,
+            BottomBar.routeName,
             (route) => false,
           );
         },
@@ -88,7 +89,7 @@ class AuthServices {
   }
 
   //get user data
-  void getUserUser(
+  void getUserData(
     BuildContext context,
   ) async {
     try {

@@ -1,3 +1,4 @@
+import 'package:amazon_clone1/common/widgets/bottom_bar.dart';
 import 'package:amazon_clone1/constants/global_variables.dart';
 import 'package:amazon_clone1/features/auth/screens/auth_screen.dart';
 import 'package:amazon_clone1/features/auth/services/auth_service.dart';
@@ -28,7 +29,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    authServices.getUserUser(context);
+    authServices.getUserData(context);
   }
 
   @override
@@ -48,7 +49,7 @@ class _MyAppState extends State<MyApp> {
         ),
         onGenerateRoute: (settings) => generateRoute(settings),
         home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-            ? const HomeScreen()
+            ? const BottomBar()
             : const AuthScreen());
   }
 }
