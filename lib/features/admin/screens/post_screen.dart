@@ -1,3 +1,4 @@
+import 'package:amazon_clone1/features/admin/screens/add_product_screen.dart';
 import 'package:flutter/material.dart';
 
 class PostScreen extends StatefulWidget {
@@ -8,6 +9,10 @@ class PostScreen extends StatefulWidget {
 }
 
 class _PostScreenState extends State<PostScreen> {
+  void navigateToAddProduct() {
+    Navigator.pushNamed(context, AddProductScreen.routeName);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +20,7 @@ class _PostScreenState extends State<PostScreen> {
         child: Text("Products"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: navigateToAddProduct,
         child: const Icon(Icons.add),
         tooltip: "Add A Product",
       ),
