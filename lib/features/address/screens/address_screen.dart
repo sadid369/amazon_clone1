@@ -2,6 +2,7 @@ import 'package:amazon_clone1/common/widgets/custom_textfield.dart';
 import 'package:amazon_clone1/constants/global_variables.dart';
 import 'package:amazon_clone1/providers/user_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:pay/pay.dart';
 import 'package:provider/provider.dart';
 
 class AddressScreen extends StatefulWidget {
@@ -18,6 +19,7 @@ class _AddressScreenState extends State<AddressScreen> {
   final TextEditingController pincodeController = TextEditingController();
   final TextEditingController cityController = TextEditingController();
   final _addressFromKey = GlobalKey<FormState>();
+  List<PaymentItem> paymentItems = [];
   @override
   void dispose() {
     super.dispose();
@@ -26,6 +28,8 @@ class _AddressScreenState extends State<AddressScreen> {
     pincodeController.dispose();
     cityController.dispose();
   }
+
+  void onGpayResult(res) {}
 
   @override
   Widget build(BuildContext context) {
@@ -116,6 +120,16 @@ class _AddressScreenState extends State<AddressScreen> {
                   ],
                 ),
               ),
+              GooglePayButton(
+                width: double.infinity,
+                paymentConfigurationAsset: 'gpay.json',
+                onPaymentResult: onGpayResult,
+                paymentItems: paymentItems,
+                style: GooglePayButtonStyle.black,
+                type: GooglePayButtonType.pay,
+                margin: const EdgeInsets.only(top: 15),
+                height: 50,
+              )
             ],
           ),
         ),
